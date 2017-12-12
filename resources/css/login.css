@@ -1,0 +1,163 @@
+body {
+  background: #eee !important;
+}
+
+.smal {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.smal .logo img {
+  width: 13.5rem;
+  height: 7.3rem;
+}
+
+.smal nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+.smal nav ul li {
+  margin: 0;
+  padding: 2.5rem 1rem;
+}
+
+.smal nav ul li a {
+  color: #666;
+  margin: 0;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.35rem;
+}
+
+.smal nav ul li.active {
+  border-bottom: 3px solid #DA9A30;
+  padding-bottom: 0rem;
+}
+
+.areaTop {
+  background: url("../image/img8.jpg");
+  background-attachment: fixed;
+  background-size: contain;
+  padding-top: 7.3rem;
+}
+
+.areaTop > div {
+  padding: 1rem 5rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.areaTop > div * {
+  color: #fff;
+}
+.helpPage{
+  background: url("../image/img6.jpg");
+ background-size: cover;
+  height: 32rem;
+}
+.helpPage div{
+  padding: 8rem 5rem;
+  background: linear-gradient(to right, rgba(0, 0, 17, 0.6), rgba(0, 0, 0, 0.1));
+}
+.helpPage div{
+
+}
+.areaForm {
+  padding: 3rem 2rem;
+}
+
+.areaForm .LoginForm, .areaForm .register {
+  width: 60rem;
+  margin: auto;
+  padding: 4rem 3rem;
+  background: #fff;
+  margin-bottom: 10rem;
+}
+
+.areaForm .register {
+  width: 80rem;
+}
+
+.areaForm .btFace {
+  background: #2F4383;
+  color: #fff;
+  margin: 2rem auto;
+}
+
+.areaForm .btFace:hover {
+  color: #fff;
+  background: #2D4373;
+}
+
+.areaForm p {
+  padding: 1.5rem;
+}
+
+.areaForm button {
+  padding: .8rem 2rem;
+  float: right;
+  margin: 1rem 3rem;
+}
+
+.areaForm .form-group {
+  margin-bottom: 15px;
+}
+
+.radio {
+  margin-bottom: 1.5rem !important;
+}
+
+.radio label {
+  margin-right: 2rem;
+}
+
+.labelObribatory {
+  margin-left: 1rem;
+}
+
+.labelObribatory:before {
+  content: "*";
+  color: red;
+  font-size: 2.2rem;
+  position: absolute;
+  left: .3rem;
+  padding-right: 2rem;
+}
+
+.areaInfo li {
+  font-size: 1.3rem;
+}
+
+.selected {
+  background: #41b3f9 !important;
+  color: #fff !important;
+}
+
+.selected:hover {
+  background: #67C2FA !important;
+  color: #fff !important;
+}
+
+.out {
+  display: none;
+}
+
+.areaConteudo{
+  padding: 3rem 6rem !important;
+}
+.areaConteudo section{
+    margin: 2rem 0;
+}
+.areaConteudo section ul{
+  padding-left: 3rem;
+}
+.areaConteudo section b, .areaConteudo section p{
+  font-size: 1.5rem;
+}
+.areaConteudo section b{
+  font-weight: 600;
+  padding: 1rem 0;
+}
+.areaConteudo section p{
+  padding-left: 1.5rem;
+}

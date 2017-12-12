@@ -1,0 +1,220 @@
+<html lang="pt">
+<link rel="shortcut icon" href="resources/image/favicon/favicon-32x32.png">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sistema Integrado de gestão de participações">
+    <meta name="author" content="Grinalda Soares">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+	<title>Registro</title>
+	<link rel="stylesheet" href="resources/css/master.css">
+	<link rel="stylesheet" href="resources/css/login.css">
+	<!-- Bootstrap Core CSS -->
+    <link href="admin/html/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin/html/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,500i,600,600i,700,900" rel="stylesheet">
+</head>
+<body>
+	<div class="areaMenu smal">
+		<a href="index.html" class="logo"><img src="resources/image/logo.png" alt="Ministério da Justiça" ></a>
+		<nav>
+		<ul class="menus">
+			<li> <a href="index.html">Página Inicial</a></li>
+			<li><a href="help.html">Central de Ajuda</a></li>
+            <li class="active"> <a href="#">Criar Conta</a></li>
+            <li class="btLink"><a href="login.php">Entrar</a> </li>
+		</ul>
+		</nav>
+	</div>
+	<div class="row areaTop">
+		<div class="">
+			<h2>Criar Conta</h2>
+			<h4>Registre-se para fazer registro de uma reclamação, denuncia ou queixa.</h4>
+		</div>
+	</div>
+	<div class="container areaForm ">
+
+		<div class="col-md-9 col-xs-12">
+			<div class="white-box">
+				<form class="form-horizontal form-material" id="formReg">
+					<div class="btn-group btn-group-justified select-mode m-b-30 controls">
+						<div class="btn-group">
+							<button id="single" class="btn btn-default  selected" type="button">
+								<i class="fa fa-user"></i><br>
+								<span>SOU PESSOA SINGULAR</span>
+							</button>
+						</div>
+						<div class="btn-group">
+							<button id="coletive" class="btn btn-default " type="button">
+								<i class="fa fa-users"></i><br>
+								<span>SOU PESSOA COLECTIVA</span>
+							</button>
+						</div>
+						<input type="hidden" value="1" name="tipoPess" id="tipoPess">
+					</div>
+					<div class="col-md-12 dvNome">
+						<div class="form-group">
+							<label class="col-md-12 labelObribatory">Nome Completo</label>
+                            <div class="col-md-12">
+                                <input type="text" name="name" placeholder="" class="form-control form-control-line">
+                            </div>
+						</div>
+					</div>
+                    <div class="col-md-6 dvNomeRepres out">
+                        <div class="form-group">
+                            <label class="col-md-12 labelObribatory">Nome do Representante</label>
+                            <div class="col-md-12">
+                                <input type="text" name="nameRepresentant" placeholder="" class="form-control form-control-line noObrigatory">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 dvNDiario out">
+                        <div class="form-group">
+                            <label class="col-md-12 labelObribatory">Nº de diário</label>
+                            <div class="col-md-12">
+                                <input type="text" name="numDiario" placeholder="" class="form-control form-control-line noObrigatory">
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-md-6 dvDocIdent">
+						<div class="form-group">
+							<label class="col-sm-12 labelObribatory">Documento de Identificação</label>
+							<div class="col-sm-12">
+								<select class="form-control form-control-line" id="doc" name="doc">
+
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 dvNumDoc">
+						<div class="form-group">
+							<label class="col-md-12 labelObribatory">Nº Documento de Identificação</label>
+							<div class="col-md-12">
+								<input type="text" name="numDoc" placeholder="" class="form-control form-control-line">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 dvNacionalidade">
+						<div class="form-group">
+							<label class="col-sm-12 labelObribatory">Nacionalidade</label>
+                            <div class="col-md-12">
+                                <select class="form-control form-control-line" id="pais" name="nacionalidade">
+
+                                </select>
+                            </div>
+
+						</div>
+					</div>
+					<div class="col-md-6 dvProfissao">
+						<div class="form-group">
+							<label class="col-md-12">Profissão</label>
+							<div class="col-md-12">
+								<input type="text" name="profissao" placeholder="ex: Engenheira" class="form-control form-control-line noObrigatory">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 dvMorada">
+						<div class="form-group">
+							<label  class="col-md-12 labelObribatory">Residência</label>
+							<div class="col-md-12">
+								<input type="text" placeholder="ex: BomBom" class="form-control form-control-line" name="residencia">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 dvDistrito">
+						<div class="form-group">
+							<label class="col-sm-12">Distrito</label>
+							<div class="col-sm-12">
+								<select class="form-control form-control-line noObrigatory" id="distrito" name="distrito">
+									<option value="">--Selecione--</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 dvTelemovel">
+						<div class="form-group">
+							<label class="col-md-12 labelObribatory">Telefone/Telemóvel</label>
+							<div class="col-md-12">
+								<div class="col-md-3">
+									<select id="" class="form-control">
+										<option value="st">+239</option>
+										<option value="pt">+351</option>
+									</select>
+								</div>
+								<div class="col-md-9">
+									<input type="number" name="telefone" placeholder=" 9902020" class="form-control form-control-line" id="txtfhone">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 dvEmail">
+						<div class="form-group">
+							<label class="col-md-12 labelObribatory">Email</label>
+							<div class="col-md-12">
+								<input type="email" id="txtemail" placeholder="antonia@gmail.com" class="form-control form-control-line" name="email" required>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 dvPass">
+						<div class="form-group">
+							<label class="col-md-12 labelObribatory">Password</label>
+							<div class="col-md-12">
+								<input type="password" name="pass" value="" class="form-control form-control-line" id="txtPass">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 dvConfPass">
+						<div class="form-group">
+							<label class="col-md-12 labelObribatory">Confirmar Password</label>
+							<div class="col-md-12">
+								<input type="password" value="" class="form-control form-control-line" id="txtConfirmPass">
+							</div>
+						</div>
+					</div>
+                    <div class="checkbox checkbox-inline">
+                        <input type="checkbox" class="" id="politics">
+                        <label for="politics">Li e aceito os <a href="#">Termos e Condições</a>, e <a href="#" target="_blank">Política de Privacidade</a>, Incluindo a utilização de cookies.</label>
+                    </div>
+
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button type="button" class="btn btn-success showtopright" id="save">Salvar</button>
+
+							<div id="alerttopright" class="myadmin-alert myadmin-alert-img alert-danger myadmin-alert-top-right " >
+								<i class="fa fa-exclamation-triangle img" style="font-size: 2.5rem; padding: 1rem" id="alertIcon"></i><a href="#" class="closed">x</a>
+								<smal class="textAlert"><h4>Erro!</h4> Preenha os campos obrigatórios</smal>
+
+							</div>
+						</div>
+						<hr>
+						<p class="pull-left"><a href="#">Já tem uma conta? Inicie sessão</a></p>
+						<p class="pull-right"><a href="#">Esqueceu-se da palavra-passe?</a></p>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="col-md-3 col-xs-12">
+			<div class="white-box areaInfo">
+                <b>Precisa de ajuda?</b> <br>
+				<li>Os campos com <b style="color: red; font-size: 2rem; text-align: center">*</b> são obrigatórios.</li>
+				<br>
+
+			</div>
+		</div>
+	</div>
+	<footer class="row">
+		<p>&copy Copyright - 2017</p>
+		<p>Made with <img style="width: 1.5rem; margin: 0 .5rem" src="resources/image/Coracao.png" alt="">  by <a
+				href="http://www.justica.gov.st/organiques/CIR.php" style="color: white"> CIR </a> - Todos os direitos Reservados</p>
+	</footer>
+</body>
+
+<script src="admin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="resources/js/utilitarios.js"></script>
+<script src="resources/js/funcoes.js"></script>
+<script src="resources/js/registro.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="admin/html/bootstrap/dist/js/bootstrap.min.js"></script>
+</html>
