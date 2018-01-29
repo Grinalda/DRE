@@ -20,10 +20,6 @@ if (!isset($_SESSION['sessao'])){
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
     <link href="../plugins/bower_components/sidebar-nav.min.css" rel="stylesheet">
-    <!-- toast CSS -->
-    <link href="../plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
-    <!-- morris CSS -->
-    <script src="../plugins/bower_components/morris/morris.css"></script>
     <!-- animation CSS -->
     <link href="css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -32,7 +28,6 @@ if (!isset($_SESSION['sessao'])){
     <link href="css/colors/default.css" id="theme" rel="stylesheet">
     <!--datatables-->
     <link href="../plugins/bower_components/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-
     <link href="../html/css/admin.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -52,10 +47,10 @@ if (!isset($_SESSION['sessao'])){
                     <!-- Logo -->
                     <a class="logo" href="dasboard.php">
                         <b>
-                       <img src="../plugins/images/gip.PNG" alt="home" class="dark-logo" />
+                       <img src="../plugins/images/dre.PNG" alt="home" class="dark-logo" />
                      </b>
                        <span class="hidden-xs">
-                       <img src="../plugins/images/gip.PNG" alt="home" class="dark-logo" /><img src="../plugins/images/gip.PNG" alt="home" class="light-logo" style="width: 15rem"/>
+                       <img src="../plugins/images/dre.PNG" alt="home" class="dark-logo" /><img src="../plugins/images/dre.PNG" alt="home" class="light-logo" style="width: 15rem"/>
                      </span> </a>
                 </div>
 
@@ -113,6 +108,9 @@ if (!isset($_SESSION['sessao'])){
                         <a href="#" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i>Técnicos</a>
                     </li>
                     <li>
+                        <a href="#" class="waves-effect"><i class="fa fa-hourglass-start fa-fw" aria-hidden="true"></i>Meus Planificados</a>
+                    </li>
+                    <li>
                         <a href="registros.php" class="waves-effect"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>Configurações</a>
                     </li>
                 </ul>
@@ -136,21 +134,20 @@ if (!isset($_SESSION['sessao'])){
                     <nav>
                         <ul>
                             <li class="tab-current"><a href="#section-iconbox-1" class="sticon fa fa-cloud-download"><span>Entrada</span></a></li>
-                            <li class=""><a href="#section-iconbox-2" class="sticon fa fa-hourglass-start"><span>Planificação</span></a></li>
-                            <li class=""><a href="#section-iconbox-3" class="sticon fa fa-pencil-square-o"><span>Em Edição</span></a></li>
+                            <li class=""><a href="#section-iconbox-2" class="sticon fa fa-hourglass-start"><span>Planificados</span></a></li>
+                            <li class=""><a href="#section-iconbox-3" class="sticon fa fa-pencil-square-o"><span>Editados</span></a></li>
                             <li class=""><a href="#section-iconbox-4" class="sticon fa Example of money fa-money"><span>Por Pagar</span></a></li>
                         </ul>
                     </nav>
                     <div class="content-wrap">
                         <section id="section-iconbox-1" class="content-current">
-                            <div class="row" style="border-bottom: 1px solid #eeeeee; padding: .3rem">
+                            <div class="row" style="">
                                 <div class="pull-left">
                                     <h3>Listagem de Entrada</h3>
                                 </div>
-                                <div class="pull-right areaButton">
-                                    <li><a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                                            <span class="circle circle-sm bg-success di"><i class="fa fa-plus"></i></span>
-                                            <span> Nova Entrada</span></a>
+                                <div class="pull-right areaButton m-r-40">
+                                    <li class=""><a href="#" data-toggle="modal" data-target="#modalEntrd" data-whatever="@mdo">
+                                            <span class="circle circle-sm bg-info di" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><i class="fa fa-plus"></i></span>
                                     </li>
                                 </div>
                             </div>
@@ -162,15 +159,14 @@ if (!isset($_SESSION['sessao'])){
                                         <div class="table-responsive">
                                             <div id="example23_wrapper" class="dataTables_wrapper">
 
-                                                <div id="example23_filter" class="dataTables_filter">
-                                                    <label>Search:<input type="search" class="" placeholder="" aria-controls="example23"></label></div><table id="example23" class="display nowrap dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
+                                                <table id="example23" class="display nowrap dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="modalPlani" style="width: 100%;" data-toggle="modal" data-target="#modalPlanif" data-whatever="@mdo">
                                                     <thead>
                                                         <tr>
                                                             <th rowspan="1" colspan="1">Nº Entrada</th>
                                                             <th rowspan="1" colspan="1">Data</th>
                                                             <th rowspan="1" colspan="1">Instituição</th>
                                                             <th rowspan="1" colspan="1">Tipo doc</th>
-                                                            <th rowspan="1" colspan="1">Nº Tip Doc</th>
+                                                            <th rowspan="1" colspan="1">Nº Tipo Doc</th>
                                                             <th rowspan="1" colspan="1">Ação</th>
                                                         </tr>
                                                     </thead>
@@ -234,7 +230,11 @@ if (!isset($_SESSION['sessao'])){
                                                             <td>Planificar</td>
                                                         </tr>
                                                     </tbody>
-                                                </table><div class="dataTables_info" id="example23_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div><div class="dataTables_paginate paging_simple_numbers" id="example23_paginate"><a class="paginate_button previous disabled" aria-controls="example23" data-dt-idx="0" tabindex="0" id="example23_previous">Previous</a><span><a class="paginate_button current" aria-controls="example23" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="example23" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="example23" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="example23" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="example23" data-dt-idx="5" tabindex="0">5</a><a class="paginate_button " aria-controls="example23" data-dt-idx="6" tabindex="0">6</a></span><a class="paginate_button next" aria-controls="example23" data-dt-idx="7" tabindex="0" id="example23_next">Next</a></div></div>
+                                                </table>
+                                                <div class="dataTables_info" id="example23_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                                                <div class="dataTables_paginate paging_simple_numbers" id="example23_paginate">
+                                                    <a class="paginate_button previous disabled" aria-controls="example23" data-dt-idx="0" tabindex="0" id="example23_previous">Previous</a>
+                                                    <span><a class="paginate_button current" aria-controls="example23" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="example23" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="example23" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="example23" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="example23" data-dt-idx="5" tabindex="0">5</a><a class="paginate_button " aria-controls="example23" data-dt-idx="6" tabindex="0">6</a></span><a class="paginate_button next" aria-controls="example23" data-dt-idx="7" tabindex="0" id="example23_next">Next</a></div></div>
                                         </div>
                                     </div>
                                 </div>
@@ -245,9 +245,7 @@ if (!isset($_SESSION['sessao'])){
                                 <div class="pull-left">
                                     <h3>Planificação</h3>
                                 </div>
-<!--                                <div class="pull-right areaButton">-->
-<!--                                    <li><a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><span class="circle circle-sm bg-success di"><i class="fa fa-plus"></i></span><span> Nova Entrada</span></a></li>-->
-<!--                                </div>-->
+
                             </div>
 
                             <div class="areaTable row" >
@@ -258,7 +256,9 @@ if (!isset($_SESSION['sessao'])){
                                             <div id="example23_wrapper" class="dataTables_wrapper">
 
                                                 <div id="example23_filter" class="dataTables_filter">
-                                                    <label>Search:<input type="search" class="" placeholder="" aria-controls="example23"></label></div><table id="example23" class="display nowrap dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
+                                                    <label>Search:<input type="search" class="" placeholder="" aria-controls="example23"></label>
+                                                </div>
+                                                <table id="example23" class="display nowrap dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
                                                     <thead>
                                                     <tr>
                                                         <th rowspan="1" colspan="1">Nº Planificação</th>
@@ -348,14 +348,14 @@ if (!isset($_SESSION['sessao'])){
                 <footer class="footer text-center"> 2017 &copy; GIP Online </footer>
             </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+        <div class="modal animated bounceInRight" id="modalEntrd" tabindex="-1" role="dialog" aria-labelledby="modalEntrdLabel1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <h4 class="modal-title" id="exampleModalLabel1">Nova Entrada</h4>
+                        <h4 class="modal-title" id="modalEntrdLabel1">Nova Entrada</h4>
                     </div>
                     <div class="modal-body">
                         <form>
@@ -375,16 +375,16 @@ if (!isset($_SESSION['sessao'])){
                             </div>
                             <div class="form-group">
                                 <label for="" class="control-label">Upload do Documento:</label>
-                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                        <div class="form-control" data-trigger="fileinput">
-                                            <i class="fa fa-file fileinput-exists"></i>
-                                            <span class="fileinput-filename"></span>
-                                        </div>
-                                        <span class="input-group-addon btn btn-default btn-file">
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput">
+                                        <i class="fa fa-file fileinput-exists"></i>
+                                        <span class="fileinput-filename"></span>
+                                    </div>
+                                    <span class="input-group-addon btn btn-default btn-file">
                                             <span class="fileinput-new">Selecionar Ficheiro</span>
                                             <input type="file" name="...">
                                         </span>
-                                    </div>
+                                </div>
                             </div>
                             <div class="radio-list">
                                 <label class="labelObribatory">Pagamento</label>
@@ -417,14 +417,55 @@ if (!isset($_SESSION['sessao'])){
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+
+        <div class="modal animated bounceInRight" id="modalPag" tabindex="-1" role="dialog" aria-labelledby="modalmodalPagLabel1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <h4 class="modal-title" id="exampleModalLabel1">Planificação</h4>
+                        <h4 class="modal-title" id="modalPagLabel1">Realizar Pagamento</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label class="control-label">Nº de Entrada:</label>
+                                <label class="control-label">45</label></div>
+                            <div class="form-group">
+                                <label for="" class="control-label">Discritivo</label>
+                                <input type="text" class="form-control" id=""> </div>
+                            <div class="form-group">
+                                <label for="" class="control-label">Código de Operação</label>
+                                <select name="" id="" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="control-label">Valor</label>
+                                <input type="text" class="form-control" id="">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="control-label">Data de Registro</label>
+                                <input type="text" class="form-control" id="">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-default"> «« Voltar</button>
+                        <button type="button" class="btn btn-primary">Salvar Pagamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalPlanif" tabindex="-1" role="dialog" aria-labelledby="modalPlanifLabe1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="modalPlanifLabel">Planificação</h4>
                     </div>
                     <div class="modal-body">
                         <form>
@@ -448,6 +489,7 @@ if (!isset($_SESSION['sessao'])){
                 </div>
             </div>
         </div>
+
     <div class="areaMoreInfo out col-md-12">
         <div class="col-md-12">
             <div class="panel panel-info">
@@ -550,11 +592,6 @@ if (!isset($_SESSION['sessao'])){
     </div>
 
     <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!--Morris-->
-    <script src="../plugins/bower_components/morris/morris.js"></script>
-    <script src="../plugins/bower_components/morris/raphael-min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Menu Plugin JavaScript -->
@@ -567,25 +604,22 @@ if (!isset($_SESSION['sessao'])){
 
     <script src="../../resources/js/utilitarios.js"></script>
     <script src="../../resources/js/funcoes.js"></script>
-<!--    <script src="js/dasboard.js"></script>-->
     <script src="js/admin.js"></script>
-
     <script src="../plugins/bower_components/jquery.dataTables.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.4.2/b-colvis-1.4.2/b-flash-1.4.2/b-html5-1.4.2/b-print-1.4.2/cr-1.4.1/fc-3.2.3/kt-2.3.2/r-2.2.0/datatables.min.css"/>
+    <script src="../plugins/bower_components/cbpFWTabs.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.4.2/b-colvis-1.4.2/b-flash-1.4.2/b-html5-1.4.2/b-print-1.4.2/cr-1.4.1/fc-3.2.3/kt-2.3.2/r-2.2.0/datatables.min.js"></script>
-
-   <script src="../plugins/bower_components/cbpFWTabs.js"></script>
    <script type="text/javascript">
        (function() {
            [].slice.call(document.querySelectorAll('.sttabs')).forEach(function(el) {
                new CBPFWTabs(el);
            });
        })();
-       $('.modal').modal();
+       $('.modal').modal('hide');
+       $(function () {
+           $('[data-toggle="tooltip"]').tooltip()
+       })
    </script>
 
 </body>

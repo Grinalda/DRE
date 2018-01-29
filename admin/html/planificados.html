@@ -1,0 +1,367 @@
+<?php
+/*session_start();
+if (!isset($_SESSION['sessao'])){
+    header('Location: ../index.html');
+}
+*/?>
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="shortcut icon" href="../../resources/image/favicon/favicon-32x32.png">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Grinalda Soares">
+
+    <title>GIP Online</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="../plugins/bower_components/sidebar-nav.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!--datatables-->
+    <link href="../plugins/bower_components/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <script src="../plugins/bower_components/switchery.min.css"></script>
+    <script src="../plugins/bower_components/footable/footable.core.css"></script>
+    <script src="../plugins/bower_components/footable/bootstrap-select.min.css"></script>
+    <link href="../../resources/css/planificados.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="fix-header">
+
+<!-- <div class="preloader">
+     <svg class="circular" viewBox="25 25 50 50">
+         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+     </svg>
+ </div>-->
+
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top m-b-0">
+        <div class="navbar-header">
+            <div class="top-left-part">
+                <!-- Logo -->
+                <a class="logo" href="dasboard.php">
+                    <b>
+                        <img src="../plugins/images/gip.PNG" alt="home" class="dark-logo" />
+                    </b>
+                    <span class="hidden-xs">
+                       <img src="../plugins/images/gip.PNG" alt="home" class="dark-logo" /><img src="../plugins/images/dre.PNG" alt="home" class="light-logo" style="width: 15rem"/>
+                     </span> </a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right pull-right">
+
+                <li>
+                    <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+                        <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <img src="../../resources/image/avatar.png" width="36" class="img-circle"><b class="hidden-xs">
+                        Grinalda Soares
+                    </b><span class="caret"></span> </a>
+                    <ul class="dropdown-menu dropdown-user animated flipInY">
+                        <li>
+                            <div class="dw-user-box">
+                                <div class="u-img"><img src="../../resources/image/avatar.png" alt="user" ></div>
+                                <div class="u-text">
+                                    <h4>
+                                        Grinalda Soares
+                                    </h4>
+                                    <p class="text-muted"> NIF:
+                                        123456
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" id="logout"  >
+                            <i class="fa fa-power-off"></i> Logout
+                        </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav slimscrollsidebar">
+            <div class="sidebar-head">
+
+            </div>
+            <ul class="nav" id="side-menu">
+                <li style="margin-top: 8rem">
+                    <a href="dasboard.php" class="waves-effect"><i class="fa fa-th-large fa-fw" aria-hidden="true"></i>Dasboard</a>
+                </li>
+                <li>
+                    <a href="diarios.php" class="waves-effect"><i class="fa fa-book fa-fw" aria-hidden="true"></i>Diários Publicados</a>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i>Técnicos</a>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect active"><i class="fa fa-hourglass-start fa-fw" aria-hidden="true"></i>Meus Planificados</a>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect"><i class="fa fa-dollar fa-fw" aria-hidden="true"></i>Mapa Financeiro</a>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect"><i class="fa fa-cogs fa-fw" aria-hidden="true"></i>Configurações</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="page-wrapper" style="min-height: 70vh;">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Planificados</h4> </div>
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Meus Planificados </a></li>
+                        <li><a href="#" class="active" id="olActive">Para Edição </a></li>
+                        <button  class="btn btn-info m-l-10" data-toggle="modal" data-target="#modalDR" data-whatever="@mdo"> Criar Diário </button>
+                    </ol>
+                </div>
+            </div>
+            <!-- .row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="white-box">
+                        <h3 class="box-title m-b-30">Listagem dos Planificados</h3>
+                        <!-- Nav tabs -->
+                        <ul class="nav customtab nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#Edicao" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> Para Edição</span><label class="label label-info m-l-5"> 3</label></a></li>
+                            <li role="presentation" class=""><a href="#virificacao" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Em Verificação</span></a></li>
+                            <li role="presentation" class=""><a href="#finalize" aria-controls="messages" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-email"></i></span> <span class="hidden-xs">Para Finalizar</span></a></li>
+                            <li role="presentation" class=""><a href="#settings1" aria-controls="settings" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-settings"></i></span> <span class="hidden-xs">Settings</span></a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content tab-content-planif">
+                            <div role="tabpanel" class="tab-pane fade active in" id="Edicao">
+                                <div class="col-md-4 m-t-10">
+                                    <div class="pl-item col-md-12">
+                                        <div class="file-icon col-md-3">
+                                            <span class=""><i class="fa fa-file-pdf-o"></i></span>
+                                        </div>
+                                        <div class="details col-md-9">
+                                            <span class="span-TipoDoc"><b>Decreto Lei</b></span>
+                                            <span class="span-Instituicao">Gabinete do Ministro</span>
+                                            <span class="span-ofocio">Ofício nº 11/17</span>
+                                            <div class="EditArea">
+                                                <div class="checkbox checkbox-info">
+                                                    <input id="checkbox1" type="checkbox">
+                                                    <label for="checkbox1"> Em Edição </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 m-t-10">
+                                <div class="pl-item col-md-12">
+                                    <div class="file-icon col-md-3">
+                                        <span class=""><i class="fa fa-file-pdf-o"></i></span>
+                                    </div>
+                                    <div class="details col-md-9">
+                                        <span class="span-TipoDoc"><b>Decreto Lei</b></span>
+                                        <span class="span-Instituicao">Gabinete do Ministro</span>
+                                        <span class="span-ofocio">Ofício nº 11/17</span>
+                                        <div class="EditArea">
+                                            <div class="checkbox checkbox-info">
+                                                <input id="checkbox2" type="checkbox">
+                                                <label for="checkbox2"> Em Edição </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="col-md-4 m-t-10">
+                                    <div class="pl-item col-md-12">
+                                        <div class="file-icon col-md-3">
+                                            <span class=""><i class="fa fa-file-pdf-o"></i></span>
+                                        </div>
+                                        <div class="details col-md-9">
+                                            <span class="span-TipoDoc"><b>Decreto Lei</b></span>
+                                            <span class="span-Instituicao">Gabinete do Ministro</span>
+                                            <span class="span-ofocio">Ofício nº 11/17</span>
+                                            <div class="EditArea">
+                                                <div class="checkbox checkbox-info">
+                                                    <input id="checkbox3" type="checkbox">
+                                                    <label for="checkbox3"> Em Edição </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="virificacao">
+                                <div class="col-md-4 m-t-10">
+                                    <div class="pl-item verific-panel error-dr col-md-12">
+                                        <div class="file-icon col-md-2">
+                                            <span class=""><i class="fa fa-file-pdf-o"></i></span>
+                                        </div>
+                                        <div class="details col-md-10">
+                                            <span class="span-TipoDoc"><b>DR nº 20/17</b></span>
+                                            <span class="span-entrada">Despacho 21/2017</span>
+                                            <span class="span-entrada">Extrato de diploma</span>
+                                            <span class="span-entrada">Anúncio Judicial</span>
+                                            <span class="span-entrada">Constituição de Sociedade</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 m-t-10">
+                                    <div class="pl-item verific-panel corret-dr col-md-12">
+                                        <div class="file-icon col-md-2">
+                                            <span class=""><i class="fa fa-file-pdf-o"></i></span>
+                                        </div>
+                                        <div class="details col-md-10">
+                                            <span class="span-TipoDoc"><b>DR nº 20/17</b></span>
+                                            <span class="span-entrada">Despacho 21/2017</span>
+                                            <span class="span-entrada">Extrato de diploma</span>
+                                            <span class="span-entrada">Anúncio Judicial</span>
+                                            <span class="span-entrada">Constituição de Sociedade</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="finalize">
+                                <div class="col-md-4 m-t-10">
+                                    <div class="pl-item verific-panel corret-dr col-md-12">
+                                        <div class="file-icon col-md-2">
+                                            <span class=""><i class="fa fa-file-pdf-o"></i></span>
+                                        </div>
+                                        <div class="details col-md-10">
+                                            <span class="span-TipoDoc"><b>DR nº 20/17</b></span>
+                                            <span class="span-entrada">Despacho 21/2017</span>
+                                            <span class="span-entrada">Extrato de diploma</span>
+                                            <span class="span-entrada">Anúncio Judicial</span>
+                                            <span class="span-entrada">Constituição de Sociedade</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="settings1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- .row -->
+        </div>
+        <!-- /.container-fluid -->
+        <footer class="footer text-center"> 2017 © DRE Online </footer>
+    </div>
+</div>
+
+<div class="modal animated bounceInRight" id="modalDR" tabindex="-1" role="dialog" aria-labelledby="modalDRLabel1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="modalDRLabel1">Novo Diário</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row m-b-20">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label class="control-label">Nº de Diário:</label>
+                                <label class="control-label">58</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkbox checkbox-inline pull-right">
+                                    <input type="checkbox" class="" id="sup">
+                                    <label for="sup">Suplemento</label>
+                                </div>
+                                <label class="control-label m-l-10 hidden" id="countSup">1º Suplemento</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12"></div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label for="" class="control-label">Nº de Página:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Página Inicial">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Página Final">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group more-padding">
+                        <label for="" class="control-label">Data:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group more-padding">
+                        <label for="" class="control-label">Upload do Documento:</label>
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput">
+                                <i class="fa fa-file fileinput-exists"></i>
+                                <span class="fileinput-filename"></span>
+                            </div>
+                            <span class="input-group-addon btn btn-default btn-file">
+                                            <span class="fileinput-new">Selecionar Ficheiro</span>
+                                            <input type="file" name="...">
+                                        </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar Entrada</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Menu Plugin JavaScript -->
+        <script src="../plugins/bower_components/sidebar-nav.min.js"></script>
+        <!--Wave Effects -->
+        <script src="js/waves.js"></script>
+
+        <script src="js/custom.min.js"></script>
+        <script src="../plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+
+        <script src="../../resources/js/utilitarios.js"></script>
+        <script src="../../resources/js/funcoes.js"></script>
+        <!--    <script src="js/dasboard.js"></script>-->
+        <script src="js/admin.js"></script>
+
+        <script src="../plugins/bower_components/jquery.dataTables.min.js"></script>
+
+        <script type="text/javascript">
+            (function() {
+                [].slice.call(document.querySelectorAll('.sttabs')).forEach(function(el) {
+                    new CBPFWTabs(el);
+                });
+            })();
+            $('#exampleModal').modal();
+        </script>
+
+</body>
+
+</html>
+

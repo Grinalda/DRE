@@ -1,0 +1,86 @@
+.areaSections{
+  height: 71.5vh;
+}
+.content-Planif{
+  height: 50vh;
+  overflow-y: auto;
+}
+.tab-content-planif{
+  background: #ffffff;
+  height: 50vh;
+}
+.pl-item{
+  box-shadow: 0 4px 2px 0 rgba(0, 0, 0, .03), 0 1px 4px 0 rgba(0, 0, 0, .048), 0 3px 1px -2px rgba(0, 0, 0, .12);
+  margin: .5rem;
+
+  .file-icon{
+    display: flex;
+    align-items: center;
+    height: 6vh;
+    padding: .5rem;
+
+    span{
+      cursor: pointer !important;
+
+      i{
+        font-size: 3rem;
+        color: #888;
+        cursor: pointer;
+      }
+    }
+
+  }
+  .details{
+    border-left: 1px solid #eee;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+
+    span{
+      padding: .2rem;
+    }
+  }
+}
+
+.verific-panel{
+
+  span{
+    font-size: 1.3rem;
+    padding: .3rem 0 !important;
+
+    i{
+       font-size: 2.5rem !important;
+    }
+  }
+  .span-entrada{
+    padding-left: 1rem !important;
+
+    &:before{
+      content: "\2713";
+      color: #bbb;
+      padding-right: .5rem;
+      position: absolute;
+      left: 1.5rem;
+    }
+  }
+
+
+}
+.corret-dr{
+  border-left: 2px solid #00AEEF;
+  span i{
+    color: #00AEEF !important;
+  }
+  .span-TipoDoc{
+    color: #00AEEF;
+  }
+}
+.error-dr{
+  border-left: 2px solid red;
+  span i{
+    color: red !important;
+  }
+  .span-TipoDoc{
+    color: red;
+  }
+}
